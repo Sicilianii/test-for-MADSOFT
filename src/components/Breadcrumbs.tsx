@@ -1,24 +1,20 @@
 import React from 'react';
-import { Steps } from 'antd';
+import {Question, QuestionVariantAnswer} from "../types/Question.type.ts";
+import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
+import {Link} from "react-router-dom";
 
-const description = 'This is a description.';
-const Breadcrumbs: React.FC = () => (
-    <Steps
-        direction="vertical"
-        size="small"
-        current={1}
-        items={[
-            { title: 'Finished', description },
-            {
-                title: 'In Progress',
-                description,
-            },
-            {
-                title: 'Waiting',
-                description,
-            },
-        ]}
-    />
-);
+const Breadcrumbs: React.FC = () => {
+    const currentQuestion: Question[] = useTypedSelector(state => state)
+
+    return (
+        <ul>
+            {/*{currentQuestion.length && currentQuestion.map((question: QuestionVariantAnswer) => <>)}*/}
+            <li>
+                <Link to={''}></Link>
+            </li>
+        </ul>
+    );
+};
+
 
 export default Breadcrumbs;

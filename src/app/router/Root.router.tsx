@@ -1,7 +1,11 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import RootPage from "../../pages/Root.page.tsx";
 import StartTestPage from "../../pages/StartTest.page.tsx";
+import ListTestPage from "../../pages/ListTest.page.tsx";
 import EndTestPage from "../../pages/EndTest.page.tsx";
+// import StartTestPage from "../../pages/StartTest.page.tsx";
+// import EndTestPage from "../../pages/EndTest.page.tsx";
+// import ListTestPage from "../../pages/ListTest.page.tsx";
 
 const router = createBrowserRouter([
     {
@@ -13,16 +17,23 @@ const router = createBrowserRouter([
         element: <div>About</div>,
     },
     {
-        path: "start",
-        element: <StartTestPage />,
-    },
-    {
-        path: "end",
-        element: <EndTestPage />,
-    },
-    {
         path: "question",
-        element: <EndTestPage />,
+        children: [
+            {
+                index: true,
+                path: "/question/start",
+                element: <StartTestPage />,
+            },
+            {
+                path: "/question/:questionId",
+                element: <ListTestPage />
+            },
+            {
+                path: "/question/end",
+                element: <EndTestPage />,
+            },
+
+        ]
     },
 ]);
 

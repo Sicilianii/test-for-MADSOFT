@@ -1,5 +1,6 @@
 export type Question = {
     title: string,
+    status: 'idle' | 'success',
     type: 'radio' | 'checkbox',
     variant: QuestionVariantAnswer[]
 }
