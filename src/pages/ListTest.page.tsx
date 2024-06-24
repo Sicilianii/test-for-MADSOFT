@@ -1,13 +1,30 @@
-import {Link} from "react-router-dom";
+
+import Breadcrumbs from "../components/Breadcrumbs.tsx";
+import Timer from "../components/Timer.tsx";
+// import {QuestionVariantAnswer} from "../types/Question.type.ts";
 
 
 function ListTestPage() {
+
+
+
     return (
         <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className={'text-3xl font-bold'}>Тестирование</h1>
-            <p>Ваш уровень знания JavaScript очень низкий</p>
-            <span>Вы ответили правильно на 0 из 24 вопросов за 18 секунды.</span>
-            <Link to={"/start"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'}>Пройти заново</Link>
+            <div>
+                <h1 className={'text-3xl font-bold'}>Тестирование</h1>
+                <Timer />
+            </div>
+            <Breadcrumbs/>
+            <span>Что должен знать фронтенд-разработчик? Назовите три ключевых технологии</span>
+            <form>
+                {/*<ul>*/}
+                {/*    {arrayQuestions.length && arrayQuestions.map((question: QuestionVariantAnswer) => <li key={`${question.id}`}>*/}
+                {/*        <input type="radio" id={`${question.id}`}/>*/}
+                {/*        <label htmlFor={`${question.id}`}>{question.value}</label>*/}
+                {/*    </li>)}*/}
+                {/*</ul>*/}
+                <button type={"submit"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'}></button>
+            </form>
         </div>
     );
 }

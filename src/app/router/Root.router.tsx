@@ -20,6 +20,10 @@ const router = createBrowserRouter([
         path: "end",
         element: <EndTestPage />,
     },
+    {
+        path: "question",
+        element: <EndTestPage />,
+    },
 ]);
 
 export default function RootRouter() {
