@@ -6,7 +6,7 @@ function StartTestPage() {
             <h1 className={'text-3xl font-bold'}>Тест на знание JavaScript</h1>
             <p>На выполнение теста отводится 20 минут.</p>
             <span>Ответьте на 24 вопроса и узнайте ваш уровень знания JavaScript.</span>
-            <Link to={"/question/end"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'}>Начать</Link>
+            <Link to={"/question/1"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'}>Начать</Link>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import {Question} from "../../types/Question.type.ts";
 
 const initialState: Question[] = [
     {
+        "id_question": 1,
         "title": "Чему равно 2 && 1 && null && 0 && undefined",
         "status": "idle",
         "type": "radio",
@@ -34,6 +35,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 2,
         "title": "Что выведет этот код?  alert( +\"Infinity\" );",
         "status": "idle",
         "type": "radio",
@@ -57,6 +59,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 3,
         "title": "Какие вызовы parseInt возвратят число?",
         "status": "idle",
         "type": "checkbox",
@@ -80,6 +83,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 4,
         "title": "Чему равно 0 || \"\" || 2 || undefined || true || falsе ?",
         "status": "idle",
         "type": "radio",
@@ -111,6 +115,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 5,
         "title": "Что получится, если сложить true + false?",
         "status": "idle",
         "type": "radio",
@@ -134,6 +139,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 6,
         "title": "Объявлена функция:  function F() {}  Чем является F.prototype?",
         "status": "idle",
         "type": "radio",
@@ -153,6 +159,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 7,
         "title": "Чему равно такое выражение?  [] + false - null + true",
         "status": "idle",
         "type": "radio",
@@ -176,6 +183,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 8,
         "title": "Какие конструкции для циклов есть в javascript?",
         "status": "idle",
         "type": "radio",
@@ -195,6 +203,7 @@ const initialState: Question[] = [
         ]
     },
     {
+        "id_question": 9,
         "title": "Какая арифметическая операция приводит к ошибке в javascript?",
         "status": "idle",
         "type": "radio",
@@ -230,7 +239,7 @@ const QuestionsSlice = createSlice({
 });
 
 export const QuestionReducer = QuestionsSlice.reducer;
-export type RootReducerType = ReturnType<typeof QuestionReducer>;
+
 
 export const {
     addQuestion,

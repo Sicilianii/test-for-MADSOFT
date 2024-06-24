@@ -1,4 +1,4 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {QuestionReducer} from "./questions.slice.ts";
 import {
     persistStore,
@@ -17,7 +17,12 @@ const persistConfig = {
     storage
 }
 
-const persistedReducer = persistReducer(persistConfig, QuestionReducer);
+const combineReducer = combineReducers({
+    qustions: QuestionReducer
+});
+export type RootReducerType = ReturnType<typeof combineReducer>;
+
+const persistedReducer = persistReducer(persistConfig, combineReducer);
 
 export const store = configureStore({
     reducer: persistedReducer,

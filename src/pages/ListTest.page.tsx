@@ -1,12 +1,19 @@
 
 import Breadcrumbs from "../components/Breadcrumbs.tsx";
 import Timer from "../components/Timer.tsx";
+import {Params, useParams} from "react-router-dom";
+import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
 
 
 function ListTestPage() {
+    const {questionId}: Readonly<Params<string>> = useParams();
+    const currentQuestionId = questionId ? questionId : "0";
+    const currentQuestion = useTypedSelector(state => state.qustions.find((question) => question.id_question === currentQuestionId));
+ /*  currentQuestion  ???????????*/
+    console.log(currentQuestion)
 
     return (
-        <div className="flex flex-col items-center justify-center gap-4">
+        <section className="flex flex-col items-start justify-center gap-4 max-w-[1024px] w-full max-h-[768px] h-full">
             <div>
                 <h1 className={'text-3xl font-bold'}>Тестирование</h1>
                 <Timer />
@@ -22,7 +29,7 @@ function ListTestPage() {
                 {/*</ul>*/}
                 <button type={"submit"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'}>Следующий</button>
             </form>
-        </div>
+        </section>
     );
 }
 

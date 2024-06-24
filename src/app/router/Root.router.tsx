@@ -3,9 +3,6 @@ import RootPage from "../../pages/Root.page.tsx";
 import StartTestPage from "../../pages/StartTest.page.tsx";
 import ListTestPage from "../../pages/ListTest.page.tsx";
 import EndTestPage from "../../pages/EndTest.page.tsx";
-// import StartTestPage from "../../pages/StartTest.page.tsx";
-// import EndTestPage from "../../pages/EndTest.page.tsx";
-// import ListTestPage from "../../pages/ListTest.page.tsx";
 
 const router = createBrowserRouter([
     {
