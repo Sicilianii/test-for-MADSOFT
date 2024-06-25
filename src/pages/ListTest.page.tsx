@@ -4,6 +4,7 @@ import Timer from "../components/Timer.tsx";
 import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
 import {Question} from "../types/Question.type.ts";
 import TypeRadio from "../components/SelectTypeAnswers/TypeRadio.tsx";
+import TypeCheckbox from "../components/SelectTypeAnswers/TypeChekbox.tsx";
 function ListTestPage() {
 
 
@@ -19,7 +20,7 @@ function ListTestPage() {
             <Breadcrumbs/>
             <span className={'font-bold'}>{currentQuestion?.title || 'not found'}</span>
             {currentQuestion.type === 'radio' && <TypeRadio question={currentQuestion}/>}
-
+            {currentQuestion.type === 'checkbox' && <TypeCheckbox question={currentQuestion}/>}
         </section>
     );
 }
