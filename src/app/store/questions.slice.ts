@@ -4,6 +4,7 @@ import {Question} from "../../types/Question.type.ts";
 const initialState: Question[] = [
     {
         "id_question": 1,
+        "current": false,
         "title": "Чему равно 2 && 1 && null && 0 && undefined",
         "status": "idle",
         "type": "radio",
@@ -36,6 +37,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 2,
+        "current": false,
         "title": "Что выведет этот код?  alert( +\"Infinity\" );",
         "status": "idle",
         "type": "radio",
@@ -60,6 +62,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 3,
+        "current": false,
         "title": "Какие вызовы parseInt возвратят число?",
         "status": "idle",
         "type": "checkbox",
@@ -84,6 +87,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 4,
+        "current": false,
         "title": "Чему равно 0 || \"\" || 2 || undefined || true || falsе ?",
         "status": "idle",
         "type": "radio",
@@ -116,6 +120,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 5,
+        "current": false,
         "title": "Что получится, если сложить true + false?",
         "status": "idle",
         "type": "radio",
@@ -140,6 +145,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 6,
+        "current": false,
         "title": "Объявлена функция:  function F() {}  Чем является F.prototype?",
         "status": "idle",
         "type": "radio",
@@ -160,6 +166,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 7,
+        "current": false,
         "title": "Чему равно такое выражение?  [] + false - null + true",
         "status": "idle",
         "type": "radio",
@@ -184,6 +191,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 8,
+        "current": false,
         "title": "Какие конструкции для циклов есть в javascript?",
         "status": "idle",
         "type": "radio",
@@ -204,6 +212,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 9,
+        "current": true,
         "title": "Какая арифметическая операция приводит к ошибке в javascript?",
         "status": "idle",
         "type": "radio",
@@ -235,6 +244,16 @@ const QuestionsSlice = createSlice({
         addQuestion: (state, action) => console.log(state, action),
         removeQuestion: (state, action) => console.log(state, action),
         editQuestion: (state, action) => console.log(state, action),
+        nextQuestion: (state) => {
+            const currQuestID =  state.findIndex( (q) => q.current);
+            if (currQuestID === state.length - 1) {
+                state[state.length - 1].current = false;
+                state[0].current = true;
+            } else {
+                state[currQuestID].current = false;
+                state[currQuestID + 1].current = true;
+            }
+        },
     }
 });
 
@@ -244,5 +263,6 @@ export const QuestionReducer = QuestionsSlice.reducer;
 export const {
     addQuestion,
     removeQuestion,
-    editQuestion
+    editQuestion,
+    nextQuestion
 } = QuestionsSlice.actions;

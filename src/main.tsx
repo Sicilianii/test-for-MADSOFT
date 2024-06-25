@@ -5,16 +5,16 @@ import RootLayout from "./app/layouts/root.layout.tsx";
 import RootRouter from "./app/router/Root.router.tsx";
 import {persistor, store} from './app/store/store.ts';
 import {Provider} from "react-redux";
-import {PersistGate} from "redux-persist/integration/react";
+// import {PersistGate} from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
       <RootLayout>
-          <PersistGate persistor={persistor}>
+          {/*<PersistGate persistor={persistor}>*/}
               <Provider store={ store }>
                   <RootRouter />
               </Provider>
-          </PersistGate>
+          {/*</PersistGate>*/}
       </RootLayout>
   </React.StrictMode>,
 )
