@@ -7,11 +7,11 @@ const Breadcrumbs: React.FC = () => {
     const currentQuestion: Question[] = useTypedSelector((state: Question[]) => state);
 
     return (
-        <ul className={'flex gap-1 w-full'}>
+        <ul className={'flex gap-2 w-full'}>
             { currentQuestion.length && currentQuestion.map((question: Question) =>
                 <li key={`${question.id_question}`} className={clsx(
-                    question.status ? 'bg-black' : 'bg-orange-700',
-                    'w-full h-2'
+                    question.status === 'success' ? 'bg-black' : question.current ? 'bg-[#b92a35]' : 'bg-[#e1e1e1]',
+                    'w-full h-2 rounded-sm',
                 )}>
                 </li>
             )}

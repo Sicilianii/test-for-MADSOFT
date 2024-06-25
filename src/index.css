@@ -4,3 +4,6 @@
 * {
     font-family: "Calibri Light", sans-serif;
 }
+input[type='checkbox'], input[type='radio']{
+    accent-color: #E52B50;
+}

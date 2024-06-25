@@ -4,7 +4,7 @@ import {Question} from "../../types/Question.type.ts";
 const initialState: Question[] = [
     {
         "id_question": 1,
-        "current": false,
+        "current": true,
         "title": "Чему равно 2 && 1 && null && 0 && undefined",
         "status": "idle",
         "type": "radio",
@@ -212,7 +212,7 @@ const initialState: Question[] = [
     },
     {
         "id_question": 9,
-        "current": true,
+        "current": false,
         "title": "Какая арифметическая операция приводит к ошибке в javascript?",
         "status": "idle",
         "type": "radio",
@@ -249,8 +249,10 @@ const QuestionsSlice = createSlice({
             if (currQuestID === state.length - 1) {
                 state[state.length - 1].current = false;
                 state[0].current = true;
+                state.forEach( (q, i) => state[i].status = 'idle')
             } else {
                 state[currQuestID].current = false;
+                state[currQuestID].status = "success";
                 state[currQuestID + 1].current = true;
             }
         },

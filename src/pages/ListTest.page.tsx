@@ -1,25 +1,13 @@
 
 import Breadcrumbs from "../components/Breadcrumbs.tsx";
 import Timer from "../components/Timer.tsx";
-// import {MouseEventHandler, useState} from "react";
 import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
-import {nextQuestion} from "../app/store/questions.slice.ts";
-import {useDispatch} from "react-redux";
 import {Question} from "../types/Question.type.ts";
-import {Dispatch, UnknownAction} from "@reduxjs/toolkit";
-
-
-// import {Params, useParams} from "react-router-dom";
-// import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
-
-
+import TypeRadio from "../components/SelectTypeAnswers/TypeRadio.tsx";
 function ListTestPage() {
-    // const {questionId}: Readonly<Params<string>> = useParams();
-    // const currentQuestionId = questionId ? questionId : "0";
-    // const currentQuestion = useTypedSelector(state => state.qustions.find((question) => (question.id_question).toString() === currentQuestionId));
- /*  currentQuestion  ???????????*/
-    const dispatch: Dispatch<UnknownAction> = useDispatch();
-    const currentQuestion: Question | undefined = useTypedSelector((state: Question[]) => state.find( (question:Question) => question.current));
+
+
+    const currentQuestion: Question = useTypedSelector((state: Question[]) => state.find( (question:Question) => question.current) || state[0]);
 
     console.log(currentQuestion)
     return (
@@ -29,16 +17,9 @@ function ListTestPage() {
                 <Timer />
             </div>
             <Breadcrumbs/>
-            <span>{currentQuestion?.title || 'not found'}</span>
-            <form>
-                {/*<ul>*/}
-                {/*    {arrayQuestions.length && arrayQuestions.map((question: QuestionVariantAnswer) => <li key={`${question.id}`}>*/}
-                {/*        <input type="radio" id={`${question.id}`}/>*/}
-                {/*        <label htmlFor={`${question.id}`}>{question.value}</label>*/}
-                {/*    </li>)}*/}
-                {/*</ul>*/}
-                <button type={"button"} className={'bg-[#E52B50] py-2 px-8 rounded-md text-amber-50'} onClick={() => dispatch(nextQuestion())}>Следующий</button>
-            </form>
+            <span className={'font-bold'}>{currentQuestion?.title || 'not found'}</span>
+            {currentQuestion.type === 'radio' && <TypeRadio question={currentQuestion}/>}
+
         </section>
     );
 }
