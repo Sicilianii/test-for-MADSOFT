@@ -1,5 +1,4 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import RootPage from "../../pages/Root.page.tsx";
 import StartTestPage from "../../pages/StartTest.page.tsx";
 import ListTestPage from "../../pages/ListTest.page.tsx";
 import EndTestPage from "../../pages/EndTest.page.tsx";
@@ -7,7 +6,7 @@ import EndTestPage from "../../pages/EndTest.page.tsx";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <RootPage />,
+        element: <StartTestPage />,
     },
     {
         path: "login",
@@ -15,22 +14,11 @@ const router = createBrowserRouter([
     },
     {
         path: "question",
-        children: [
-            {
-                index: true,
-                path: "/question/start",
-                element: <StartTestPage />,
-            },
-            {
-                path: "/question/:questionId",
-                element: <ListTestPage />
-            },
-            {
-                path: "/question/end",
-                element: <EndTestPage />,
-            },
-
-        ]
+        element:  <ListTestPage />,
+    },
+    {
+        path: "end",
+        element: <EndTestPage />,
     },
 ]);
 
