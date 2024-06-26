@@ -1,6 +1,6 @@
 import {Question} from "../../types/Question.type.ts";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {nextQuestion} from "../../app/store/questions.slice.ts";
+import {nextQuestion} from "../../app/store/slices/questions.slice.ts";
 import {Dispatch, UnknownAction} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 

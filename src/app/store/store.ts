@@ -1,5 +1,6 @@
-import { configureStore} from "@reduxjs/toolkit";
-import {QuestionReducer} from "./questions.slice.ts";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {QuestionReducer} from "./slices/questions.slice.ts";
+import {timeReducer} from "./slices/timer.slice.ts";
 // import {
 //     persistStore,
 //     persistReducer,
@@ -12,18 +13,25 @@ import {QuestionReducer} from "./questions.slice.ts";
 // } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 
+
 // const persistConfig = {
 //     key: 'root',
 //     storage
 // }
+//
+
+const combine = combineReducers({
+    questions: QuestionReducer,
+    time: timeReducer
+})
 
 
-export type RootReducerType = ReturnType<typeof QuestionReducer>;
+// export type RootReducerType = ReturnType<typeof QuestionReducer>;
 
-// const persistedReducer = persistReducer(persistConfig, QuestionReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const store = configureStore({
-    reducer: QuestionReducer,
+    reducer: combine,
     // middleware: (getDefaultMiddleware) =>
     //     getDefaultMiddleware({
     //         serializableCheck: {
@@ -31,5 +39,7 @@ export const store = configureStore({
     //         },
     //     }),
 });
+
+export type StateType = ReturnType<typeof store.getState>
 
 // export const persistor = persistStore(store);

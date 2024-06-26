@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {Question} from "../../types/Question.type.ts";
+import {Question} from "../../../types/Question.type.ts";
 
 const initialState: Question[] = [
     {

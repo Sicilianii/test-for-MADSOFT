@@ -4,7 +4,7 @@ import {useTypedSelector} from "../hooks/useTypedSelector.tsx";
 import clsx from "clsx";
 
 const Breadcrumbs: React.FC = () => {
-    const currentQuestion: Question[] = useTypedSelector((state: Question[]) => state);
+    const currentQuestion: Question[] = useTypedSelector((state) => state.questions);
 
     return (
         <ul className={'flex gap-2 w-full'}>
