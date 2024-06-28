@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
-import {setTime} from "../app/store/slices/timer.slice.ts";
+
 
 export interface IRetutnTimer {
     min: number,
@@ -11,7 +10,6 @@ export interface IRetutnTimer {
 
 
 export default function useTimer(startTime: number, countTasks: number, delay: number): IRetutnTimer {
-    const dispatch = useDispatch();
     const [timeFinished, setTimeFinished] = useState<boolean>(false);
     const [timeStartedRef, setTimeStartedRef] = useState<number>(startTime || (countTasks * delay * 60 * 1000));
     const timeStarted = new Date().getTime();
@@ -19,7 +17,6 @@ export default function useTimer(startTime: number, countTasks: number, delay: n
     console.log(timeStartedRef)
 
     useEffect(() => {
-        const pepe = timeStartedRef
         const interval = setInterval(() => {
             if (timeStartedRef + timeStarted <= new Date().getTime()) {
                 setTimeStartedRef(0);
@@ -27,10 +24,9 @@ export default function useTimer(startTime: number, countTasks: number, delay: n
                 setTimeFinished(true);
                 return;
             }
-            setTimeStartedRef(prevState => (timeStartedRef + timeStarted) - new Date().getTime());
+            setTimeStartedRef((timeStartedRef + timeStarted) - new Date().getTime());
         }, 1000);
         return () => {
-            dispatch(setTime(timeStartedRef));
             clearInterval(interval);
         };
     },[])

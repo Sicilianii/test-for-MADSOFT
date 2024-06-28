@@ -13,8 +13,6 @@ function ListTestPage() {
     const {min, sec, timeIsOver}: IRetutnTimer = useTimer(startTime, countQuest, 3)
     const currentQuestion: Question = useTypedSelector((state) => state.questions.find( (question:Question) => question.current) || state.questions[0]);
 
-    console.log(min, sec, timeIsOver);
-
     return (
         <section className="flex flex-col items-start justify-center gap-4 max-w-[1024px] w-full max-h-[768px] h-full">
             <div className={'flex gap-5'}>
