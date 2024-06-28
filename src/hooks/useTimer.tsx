@@ -12,25 +12,28 @@ export interface IRetutnTimer {
 
 export default function useTimer(startTime: number, countTasks: number, delay: number): IRetutnTimer {
     const dispatch = useDispatch();
-    const [currentTime, setCurrentTime] = useState<number>(countTasks * delay * 60 * 1000);
-    const [timeStarted, setTimeStarted] = useState<number>((startTime || currentTime) + new Date().getTime());
     const [timeFinished, setTimeFinished] = useState<boolean>(false);
+    const [timeStartedRef, setTimeStartedRef] = useState<number>(startTime || (countTasks * delay * 60 * 1000));
+    const timeStarted = new Date().getTime();
+
+    console.log(timeStartedRef)
 
     useEffect(() => {
-
+        const pepe = timeStartedRef
         const interval = setInterval(() => {
-            if (timeStarted <= new Date().getTime()) {
-                setCurrentTime(0);
+            if (timeStartedRef + timeStarted <= new Date().getTime()) {
+                setTimeStartedRef(0);
+                // console.log('this ALl');
                 setTimeFinished(true);
                 return;
             }
-            setCurrentTime(timeStarted - new Date().getTime());
+            setTimeStartedRef(prevState => (timeStartedRef + timeStarted) - new Date().getTime());
         }, 1000);
         return () => {
+            dispatch(setTime(timeStartedRef));
             clearInterval(interval);
-            if (currentTime) { dispatch(setTime(currentTime)) } else { dispatch(setTime(0)) }
         };
     },[])
 
-    return {min: Math.floor(currentTime / 1000 / 60), sec: Math.ceil(currentTime / 1000 % 59), timeIsOver: timeFinished};
+    return {min: Math.floor(timeStartedRef / 1000 / 60), sec: Math.ceil(timeStartedRef / 1000 % 59), timeIsOver: timeFinished};
 }

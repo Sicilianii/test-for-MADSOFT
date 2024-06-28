@@ -4,7 +4,7 @@ import {Time} from "../../../types/Time.type.ts";
 
 
 const initialState: Time = {
-    defaultTime: 1000,
+    defaultTime: 0,
     timeStop: 0
 }
 
