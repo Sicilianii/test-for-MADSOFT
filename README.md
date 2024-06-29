@@ -34,3 +34,5 @@
 Приложение должно быть реализовано на React с использованием Typescript. Необходимо реализовать только клиентскую часть приложения, тест можно замокать, содержимое теста не имеет значения.
 
 При необходимости можно использовать любой стейтменжер, ui kit, библиотеки для работы с формами и т.д.
+
+<img src="https://lh6.googleusercontent.com/CJrXzoGFQg0j-TIox1emIaYHLsr-rOlpyYqwfRX64oCurKp3V9vENPbD2fEbjPCg5RDVuIWQ6RPSBGr0XfdglHRo9o53Fryd62wcl4euN5p7Bz-APBCuw9x1ftIikp5p5A=w740" class="HxhGpf" style="width: 740px; " title="" alt="Подпись отсутствует">
